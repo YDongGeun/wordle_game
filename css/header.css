@@ -12,6 +12,12 @@ header {
   padding: 0 10px 0 10px;
 }
 
+@media screen and (max-width: 500px) {
+  .info-bar title {
+    background-color: red;
+  }
+}
+
 .info-bar__icon img {
   width: 25px;
   height: 25px;
