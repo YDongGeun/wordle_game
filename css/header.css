@@ -1,13 +1,15 @@
 header {
-  margin-top: 10px;
-  border-bottom: 1px solid #3a3a3c;
-  padding-bottom: 10px;
+  margin-top: 100px;
+  border-bottom: 1px solid #9b9fa1;
+  padding: 0 10px 0 10px;
 }
 
 .info-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+  padding: 0 10px 0 10px;
 }
 
 .info-bar__icon img {
