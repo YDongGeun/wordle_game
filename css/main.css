@@ -7,10 +7,12 @@ main {
 }
 
 .board-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: bold;
+  gap: 5px;
 }
 
 .board-column {
