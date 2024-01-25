@@ -37,11 +37,15 @@ function appStart() {
       const block = document.querySelector(
         `.board-column[data-index='${attempts}${i}']`
       );
+      const KeyboardBlock = document.querySelector(
+        `.keyboard-column[data-index='${attempts}${i}']`
+      );
       const eventLetter = block.innerText;
       const answerLetter = answer[i];
 
       if (eventLetter === answerLetter) {
         block.style.background = "#6aaa64";
+        block.style.
         ansCnt++;
       } else if (answer.includes(eventLetter))
         block.style.background = "#c9b458";
@@ -65,6 +69,11 @@ function appStart() {
     }
   };
 
+  // 화면에 보이는 키보드
+  const screenKeyboard = () => {
+
+  };
+
   // 키보드를 입력했을때 알파벳만 입력되도록 하는 함수.
   const handleKeydown = (event) => {
     const key = event.key.toUpperCase();
@@ -83,7 +92,8 @@ function appStart() {
     }
   };
 
-  const stratTimer = () => {};
+
+//타이머 설정
   const stratTime = new Date();
 
   function sayTime() {
@@ -94,7 +104,6 @@ function appStart() {
     const timeDiv = document.querySelector("#timer");
     timeDiv.innerText = `${min}:${sec}`;
   }
-  //padStart(자리수, 무엇으로 채울건지);
 
   timer = setInterval(sayTime, 1000);
 
