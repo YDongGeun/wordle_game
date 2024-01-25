@@ -9,7 +9,7 @@ function appStart() {
     const div = document.createElement("div");
     div.innerText = "Gameover";
     div.style =
-      "display: flex; justify-content: center; align-items: center; position: absolute; top:40vh; left: 38%; background-color: white; width: 200px; height:100px;";
+      "display: flex; justify-content: center; align-items: center; position: absolute; top:40vh; left: 38%; background-color: white; width: 200px; height:100px; border: 1px solid black;";
     document.body.appendChild(div);
   };
 
@@ -37,41 +37,24 @@ function appStart() {
       const block = document.querySelector(
         `.board-column[data-index='${attempts}${i}']`
       );
-      const KeyboardBlock = document.querySelector(
-        `.keyboard-column[data-index='${attempts}${i}']`
-      );
+      let keyboardArray = [];
       const eventLetter = block.innerText;
       const answerLetter = answer[i];
 
+      keyboardArray.push(eventLetter);
       if (eventLetter === answerLetter) {
         block.style.background = "#6aaa64";
-        block.style.
         ansCnt++;
-      } else if (answer.includes(eventLetter))
+      } else if (answer.includes(eventLetter)) {
         block.style.background = "#c9b458";
-      else block.style.background = "#787c7e";
-
+      } else {
+        block.style.background = "#787c7e";
+      }
       block.style.color = "white";
     }
 
     if (ansCnt === 5 || arguments === 6) gameover();
     nextLine();
-  };
-
-  // backspace키를 입력하면 입력한 글자가 지워지는 함수
-  const handleBackspace = () => {
-    if (index > 0) {
-      const preBlock = document.querySelector(
-        `.board-column[data-index='${attempts}${index - 1}']`
-      );
-      preBlock.innerText = "";
-      if (index !== 0) index--;
-    }
-  };
-
-  // 화면에 보이는 키보드
-  const screenKeyboard = () => {
-
   };
 
   // 키보드를 입력했을때 알파벳만 입력되도록 하는 함수.
@@ -92,8 +75,18 @@ function appStart() {
     }
   };
 
+  // backspace키를 입력하면 입력한 글자가 지워지는 함수
+  const handleBackspace = () => {
+    if (index > 0) {
+      const preBlock = document.querySelector(
+        `.board-column[data-index='${attempts}${index - 1}']`
+      );
+      preBlock.innerText = "";
+      if (index !== 0) index--;
+    }
+  };
 
-//타이머 설정
+  //타이머 설정
   const stratTime = new Date();
 
   function sayTime() {
