@@ -23,3 +23,17 @@ main {
   width: 60px;
   height: 60px;
 }
+
+@keyframes block-ani {
+  0% {
+  }
+  25% {
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

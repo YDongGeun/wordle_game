@@ -1,5 +1,3 @@
-const answer = "BLOCK";
-
 let attempts = 0;
 let index = 0;
 let timer;
@@ -29,19 +27,21 @@ function appStart() {
   };
 
   // enter키를 입력하면 정답을 확인하는 함수
-  const handleEnterkey = () => {
+  const handleEnterkey = async () => {
     let ansCnt = 0;
+
+    //서버에서 정답을 받아오는 코드
+    const answerResponse = await fetch("/answer"); //응답
+    const answer = await answerResponse.json(); // 정답
 
     // 정답확인
     for (let i = 0; i < 5; i++) {
       const block = document.querySelector(
         `.board-column[data-index='${attempts}${i}']`
       );
-      let keyboardArray = [];
       const eventLetter = block.innerText;
       const answerLetter = answer[i];
 
-      keyboardArray.push(eventLetter);
       if (eventLetter === answerLetter) {
         block.style.background = "#6aaa64";
         ansCnt++;
