@@ -32,7 +32,8 @@ function appStart() {
 
     //서버에서 정답을 받아오는 코드
     const answerResponse = await fetch("/answer"); //응답
-    const answer = await answerResponse.json(); // 정답
+    const answerObject = await answerResponse.json(); // 정답 객체
+    const answer = answerObject.answer; // 정답
 
     // 정답확인
     for (let i = 0; i < 5; i++) {
