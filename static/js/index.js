@@ -35,6 +35,7 @@ function appStart() {
     const answerObject = await answerResponse.json(); // 정답 객체
     const answer = answerObject.answer; // 정답
 
+
     // 정답확인
     for (let i = 0; i < 5; i++) {
       const block = document.querySelector(
