@@ -21,7 +21,7 @@ function appStart() {
 
   // 다음 줄로 넘어 갈 수 있도록 하는 함수
   const nextLine = () => {
-    if (attempts === 6) return gameover();
+    if (attempts === 5) return gameover();
     attempts++;
     index = 0;
   };
@@ -35,7 +35,6 @@ function appStart() {
     const answerObject = await answerResponse.json(); // 정답 객체
     const answer = answerObject.answer; // 정답
 
-
     // 정답확인
     for (let i = 0; i < 5; i++) {
       const block = document.querySelector(
@@ -43,19 +42,25 @@ function appStart() {
       );
       const eventLetter = block.innerText;
       const answerLetter = answer[i];
+      const keyboard = document.querySelector(
+        `#keyboard[data-key='${eventLetter}']`
+      );
 
       if (eventLetter === answerLetter) {
         block.style.background = "#6aaa64";
+        keyboard.style.background = "#6aaa64";
         ansCnt++;
       } else if (answer.includes(eventLetter)) {
         block.style.background = "#c9b458";
+        keyboard.style.background = "#c9b458";
       } else {
+        keyboard.style.background = "#787c7e";
         block.style.background = "#787c7e";
       }
       block.style.color = "white";
     }
 
-    if (ansCnt === 5 || arguments === 6) gameover();
+    if (ansCnt === 5 || arguments === 5) gameover();
     nextLine();
   };
 
@@ -67,13 +72,28 @@ function appStart() {
       `.board-column[data-index='${attempts}${index}']`
     );
 
-    if (event.keyCode === 8) handleBackspace();
+    if (keyCode === 8) handleBackspace();
     else if (index === 5) {
-      if (event.keyCode === 13) handleEnterkey();
+      if (keyCode === 13) handleEnterkey();
       else return;
     } else if (65 <= keyCode && keyCode <= 90) {
       thisBlock.innerText = key;
       index++;
+    }
+  };
+
+  const handleClickKey = (event) => {
+    // const keyboardBtn = document.querySelector(
+    //   `#keyboard[data-key='${eventLetter}']`
+    // );
+    const keyboardBtn = document.querySelector(".keyboard-column");
+    const thisBlock = document.querySelector(
+      `.board-column[data-index='${attempts}${index}']`
+    );
+
+    console.log(event);
+
+    if (event === keyboardBtn) {
     }
   };
 
@@ -102,8 +122,11 @@ function appStart() {
 
   timer = setInterval(sayTime, 1000);
 
+  const keyboardBtn = document.querySelector(".keyboard-column");
+
   // 키보드를 누르면 이벤트를 발생.
   window.addEventListener("keydown", handleKeydown);
+  keyboardBtn.addEventListener("click", handleClickKey);
 }
 
 appStart();
