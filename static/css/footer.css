@@ -22,6 +22,7 @@ footer {
   border-radius: 5px;
   background-color: #d3d6da;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 .wide {

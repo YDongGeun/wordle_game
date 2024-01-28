@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 
-answer = 'TRAIN'
+answer = 'MUSIC'
 
 app = FastAPI()
 

@@ -37,14 +37,10 @@ function appStart() {
 
     // 정답확인
     for (let i = 0; i < 5; i++) {
-      const block = document.querySelector(
-        `.board-column[data-index='${attempts}${i}']`
-      );
+      const block = document.querySelector(`.board-column[data-index='${attempts}${i}']`);
       const eventLetter = block.innerText;
       const answerLetter = answer[i];
-      const keyboard = document.querySelector(
-        `#keyboard[data-key='${eventLetter}']`
-      );
+      const keyboard = document.querySelector(`#keyboard[data-key='${eventLetter}']`);
 
       if (eventLetter === answerLetter) {
         block.style.background = "#6aaa64";
@@ -68,9 +64,7 @@ function appStart() {
   const handleKeydown = (event) => {
     const key = event.key.toUpperCase();
     const keyCode = event.keyCode;
-    const thisBlock = document.querySelector(
-      `.board-column[data-index='${attempts}${index}']`
-    );
+    const thisBlock = document.querySelector(`.board-column[data-index='${attempts}${index}']`);
 
     if (keyCode === 8) handleBackspace();
     else if (index === 5) {
@@ -83,13 +77,9 @@ function appStart() {
   };
 
   const handleClickKey = (event) => {
-    // const keyboardBtn = document.querySelector(
-    //   `#keyboard[data-key='${eventLetter}']`
-    // );
+    const key = event;
     const keyboardBtn = document.querySelector(".keyboard-column");
-    const thisBlock = document.querySelector(
-      `.board-column[data-index='${attempts}${index}']`
-    );
+    const thisBlock = document.querySelector(`.board-column[data-index='${attempts}${index}']`);
 
     console.log(event);
 
@@ -100,9 +90,7 @@ function appStart() {
   // backspace키를 입력하면 입력한 글자가 지워지는 함수
   const handleBackspace = () => {
     if (index > 0) {
-      const preBlock = document.querySelector(
-        `.board-column[data-index='${attempts}${index - 1}']`
-      );
+      const preBlock = document.querySelector(`.board-column[data-index='${attempts}${index - 1}']`);
       preBlock.innerText = "";
       if (index !== 0) index--;
     }
